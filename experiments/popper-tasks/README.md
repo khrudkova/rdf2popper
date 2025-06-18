@@ -94,7 +94,9 @@ zendo(A):- piece(A,D),rotation(D,B),geq(B,0.94),leq(B,4.309).
 - dataset [source](https://github.com/logic-and-learning-lab/Popper/tree/main/examples/trains1)
 - dataset contains 1 000 examples, 394 positive and 606 negative
 
-## 2.1 Obtaining a solution
+The trains dataset is a well-known dataset by Larson and Michalski widely used in relational learning. The dataset contains information about trains, their cars, and their various properties, such as roof, wheels, load, and additional properties about the load. The goal is, based on these properties, to induce whether the train is going to the east or to the west.
+
+## 3.1 Obtaining a solution
 Once you have succesfully installed Popper, download the `rdf2popper_trains1` folder.
 To generate the original Popper result, the bias was left to default. No adjustments in original bias were needed for the dataset converted by `rdf2popper`.
 
@@ -107,7 +109,7 @@ Precision:1.00 Recall:1.00 TP:394 FN:0 TN:606 FP:0 Size:6
 f(A):- has_car(A,C),three_wheels(C),has_car(A,B),long(B),roof_closed(B).
 ******************************
 ```
-## 2.1.1 Popper original solution
+## 3.1.1 Popper original solution
 The Popper solution, which is the information we want to match on transformed dataset was produced by [Popper](https://github.com/logic-and-learning-lab/Popper). The solution was produced on unchanged dataset and is as follows:
 ```
 ********** SOLUTION **********
@@ -118,6 +120,8 @@ f(A):- has_car(A,B),long(B),roof_closed(B),has_car(A,C),three_wheels(C).
 ## 4. imdb3
 - dataset [source](https://github.com/logic-and-learning-lab/Popper/tree/main/examples/trains1)
 - dataset contains 121 801 examples, 4 075 positive and 117 726 negative
+
+The Internet Movie Database (IMDb) is an online database containing information about movies, TV shows, and video games, as well as actors, directors, and other film industry professionals.
 
 ## 4.1 Obtaining a solution
 Once you have succesfully installed Popper, download the `rdf2popper_imdb3` folder.

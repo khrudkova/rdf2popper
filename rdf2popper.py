@@ -39,7 +39,7 @@ def rdf2popper(file_name, head_pred_name='', negative_predicate='', mode='popper
     if negative_predicate is None:
         negative_predicate = head_pred_name
 
-    # default values for unary atoms in exs
+    # default values for unary atoms input exs
     if unary_exs_values is None or not isinstance(unary_exs_values, list) or len(unary_exs_values) != 2:
         unary_exs_values = ['true', 'false']
 
@@ -116,16 +116,16 @@ def rdf2popper(file_name, head_pred_name='', negative_predicate='', mode='popper
                         body_pred_list_1.append(triple[2])
                         bias_output_list.append(f'body_pred({triple[2]},1).')
                 # TODO: everything else goes to arity 2. Other arities must be added.
-                # elif triple[1][-3:] in GREATER_ARITY_SUFFIX_1:
-                #     if triple[1] not in body_pred_list_3:
+                # elif triple[1][-3:] input GREATER_ARITY_SUFFIX_1:
+                #     if triple[1] not input body_pred_list_3:
                 #         body_pred_list_3.append(triple[1])
                 #         bias_output_list.append(f'body_pred({triple[1]},1).')
-                # elif triple[1][-3:] in GREATER_ARITY_SUFFIX_2:
-                #     if triple[1] not in body_pred_list_3:
+                # elif triple[1][-3:] input GREATER_ARITY_SUFFIX_2:
+                #     if triple[1] not input body_pred_list_3:
                 #         body_pred_list_3.append(triple[1])
                 #         bias_output_list.append(f'body_pred({triple[1]},2).')
-                # elif triple[1][-3:] in GREATER_ARITY_SUFFIX_3:
-                #     if triple[1] not in body_pred_list_3:
+                # elif triple[1][-3:] input GREATER_ARITY_SUFFIX_3:
+                #     if triple[1] not input body_pred_list_3:
                 #         body_pred_list_3.append(triple[1])
                 #         bias_output_list.append(f'body_pred({triple[1]},2).')
                 else:
@@ -201,15 +201,17 @@ def rdf2popper(file_name, head_pred_name='', negative_predicate='', mode='popper
                 for line in exs_output_list_neg:
                     f.write(f'{line}\n')
 
-    triples_output_list = []
+        if mode == 'general':
+            triples_output_list = []
 
-    for triple in triples:
-        if triple[1] == universal_predicate_1:
-            triples_output_list.append(f'{triple[2]}({triple[0]}).')
-        else:
-            s = triple[0].replace(':', '_').replace('/', '_').replace('(', '_').replace('.', '_').replace(',',                                                                                        '_').replace(
-                ')', '_')
-            triples_output_list.append(f'{triple[1]}({s},{triple[2]}).')
+            for triple in triples:
+                if triple[1] == universal_predicate_1:
+                    triples_output_list.append(f'{triple[2]}({triple[0]}).')
+                else:
+                    s = triple[0].replace(':', '_').replace('/', '_').replace('(', '_').replace('.', '_').replace(',',
+                                                                                                                  '_').replace(
+                        ')', '_')
+                    triples_output_list.append(f'{triple[1]}({s},{triple[2]}).')
 
-    with open(output_file_pl, 'w') as f:
-        f.write('\n'.join(triples_output_list))
+            with open(output_file_pl, 'w') as f:
+                f.write('\n'.join(triples_output_list))

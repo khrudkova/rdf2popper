@@ -1,0 +1,10 @@
+head_pred(zendo,1).
+body_pred(position_p3,2).
+body_pred(position_p2,2).
+body_pred(position_p1,2).
+body_pred(orientation,2).
+body_pred(size,2).
+body_pred(rotation,2).
+body_pred(color,2).
+body_pred(piece,2).
+body_pred(contact,2).
